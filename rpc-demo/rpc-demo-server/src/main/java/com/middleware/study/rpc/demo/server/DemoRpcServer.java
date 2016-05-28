@@ -8,7 +8,8 @@ import com.middleware.study.rpc.config.ServiceConfig;
  */
 public class DemoRpcServer {
     public static void main(String[] args) {
-        HelloWorldImpl instance = new HelloWorldImpl();
+        //HelloWorldImpl instance = new HelloWorldImpl();
+        ComplexServiceImpl instance = new ComplexServiceImpl();
         ServiceConfig serviceConfig = new ServiceConfig(instance, 8888);
         serviceConfig.export();
     }
