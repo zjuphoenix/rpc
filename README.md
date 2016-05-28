@@ -1,0 +1,1 @@
+简单的rpc框架实现，参考motan，基于netty实现数据传输，基于fastjson实现序列化
