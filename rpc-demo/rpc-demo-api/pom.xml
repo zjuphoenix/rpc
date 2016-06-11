@@ -11,5 +11,12 @@
 
     <artifactId>rpc-demo-api</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.msgpack</groupId>
+            <artifactId>msgpack</artifactId>
+        </dependency>
+    </dependencies>
+
 
 </project>

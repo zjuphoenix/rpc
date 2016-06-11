@@ -19,7 +19,7 @@ import java.util.Map;
 public class DemoRpcClient {
     public static void main(String[] args) {
         //RefererConfig refererConfig = new RefererConfig(HelloWorld.class, "127.0.0.1", 8888);
-        RefererConfig refererConfig = new RefererConfig(ComplexService.class, "127.0.0.1", 8888);
+        RefererConfig refererConfig = new RefererConfig(ComplexService.class, "127.0.0.1:2181");
         ComplexService complexService = (ComplexService) refererConfig.getRef();
         Map<Integer, String> map = new HashMap<>();
         map.put(1, "11");

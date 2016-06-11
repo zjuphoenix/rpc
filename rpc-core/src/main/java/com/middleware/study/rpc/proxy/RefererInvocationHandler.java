@@ -1,6 +1,6 @@
 package com.middleware.study.rpc.proxy;
 
-import com.middleware.study.rpc.core.Referer;
+import com.middleware.study.rpc.core.impl.RpcCluster;
 import com.middleware.study.rpc.transport.impl.RpcRequest;
 import com.middleware.study.rpc.transport.impl.RpcResponse;
 import com.middleware.study.rpc.utils.ReflectUtil;
@@ -15,11 +15,11 @@ import java.lang.reflect.Method;
 public class RefererInvocationHandler<T> implements InvocationHandler {
 
     private Class<T> clz;
-    private Referer<T> referer;
+    private RpcCluster rpcCluster;
 
-    public RefererInvocationHandler(Class<T> clz, Referer<T> referer) {
+    public RefererInvocationHandler(Class<T> clz, RpcCluster rpcCluster) {
         this.clz = clz;
-        this.referer = referer;
+        this.rpcCluster = rpcCluster;
     }
 
     @Override
@@ -30,7 +30,7 @@ public class RefererInvocationHandler<T> implements InvocationHandler {
         request.setMethodName(method.getName());
         request.setParamtersType(ReflectUtil.getMethodParamsType(method));
         request.setParamters(args);
-        RpcResponse response = referer.call(request);
+        RpcResponse response = rpcCluster.call(request);
         if (response.getException() != null){
             throw response.getException();
         }

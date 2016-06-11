@@ -1,6 +1,6 @@
 package com.middleware.study.rpc.core.impl;
 
-import com.middleware.study.rpc.core.Caller;
+import com.middleware.study.rpc.core.Provider;
 import com.middleware.study.rpc.transport.exception.ServiceException;
 import com.middleware.study.rpc.transport.impl.RpcRequest;
 import com.middleware.study.rpc.transport.impl.RpcResponse;
@@ -13,7 +13,7 @@ import java.util.Map;
  * @author wuhaitao
  * @date 2016/5/25 20:59
  */
-public class RpcServiceProvider<T> implements Caller<T> {
+public class RpcServiceProvider<T> implements Provider<T> {
 
     private T instance;
     private Map<String, Method> methodMap = new HashMap<String, Method>();

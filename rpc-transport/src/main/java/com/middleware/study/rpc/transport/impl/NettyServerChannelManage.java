@@ -3,6 +3,8 @@ package com.middleware.study.rpc.transport.impl;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.net.InetSocketAddress;
 import java.util.Map;
@@ -14,6 +16,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class NettyServerChannelManage extends ChannelInboundHandlerAdapter {
 
+    private static Logger logger = LoggerFactory.getLogger(NettyServerChannelManage.class);
     private ConcurrentHashMap<String, Channel> channels = new ConcurrentHashMap<>();
     private int maxChannel = 0;
 
@@ -29,9 +32,7 @@ public class NettyServerChannelManage extends ChannelInboundHandlerAdapter {
 
         if (channels.size() > maxChannel) {
             // 超过最大连接数限制，直接close连接
-            System.out.println(String.format("NettyServerChannelManage channelConnected channel size out of limit: limit=%d current=%d",
-                    maxChannel, channels.size()));
-
+            logger.error("NettyServerChannelManage channelConnected channel size out of limit: limit={} current={}", maxChannel, channels.size());
             channel.close();
         } else {
             channels.put(channelKey, channel);

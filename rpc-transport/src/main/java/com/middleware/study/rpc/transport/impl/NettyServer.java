@@ -12,6 +12,8 @@ import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import io.netty.handler.codec.LengthFieldPrepender;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * @author wuhaitao
@@ -19,6 +21,7 @@ import io.netty.handler.logging.LoggingHandler;
  */
 public class NettyServer implements Server {
 
+    private static final Logger logger = LoggerFactory.getLogger(NettyServer.class);
     private ServerBootstrap serverBootstrap;
     private EventLoopGroup bossGroup;//acceptor线程
     private EventLoopGroup workerGroup;//io线程
@@ -40,7 +43,7 @@ public class NettyServer implements Server {
             serverChannel = f.channel();
             return true;
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("server bind is interrupted!", e);
         }
         return false;
     }

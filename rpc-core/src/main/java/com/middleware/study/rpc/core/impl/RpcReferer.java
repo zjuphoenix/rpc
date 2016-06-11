@@ -70,4 +70,9 @@ public class RpcReferer<T> implements Referer<T> {
     public String desc() {
         return "RpcReferer";
     }
+
+    @Override
+    public String getServiceUrl() {
+        return serviceHost+":"+servicePort;
+    }
 }

@@ -8,6 +8,5 @@ import com.middleware.study.rpc.transport.impl.RpcResponse;
  * @date 2016/5/25 21:01
  */
 public interface Caller<T> {
-    Class<T> getInterface();
     RpcResponse call(RpcRequest request);
 }

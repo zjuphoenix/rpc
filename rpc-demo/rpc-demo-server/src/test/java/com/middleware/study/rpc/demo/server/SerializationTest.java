@@ -38,4 +38,12 @@ public class SerializationTest {
         ClassA ins = serialization.deserialize(bytes, ClassA.class);
         System.out.println(ins);
     }
+
+    @Test
+    public void testMessagePackSerialization() throws IOException {
+        Serialization serialization = new MessagePackSerialization();
+        byte[] bytes = serialization.serialize(classA);
+        ClassA ins = serialization.deserialize(bytes, ClassA.class);
+        System.out.println(ins);
+    }
 }

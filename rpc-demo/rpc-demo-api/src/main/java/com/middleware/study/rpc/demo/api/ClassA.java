@@ -1,5 +1,7 @@
 package com.middleware.study.rpc.demo.api;
 
+import org.msgpack.annotation.Message;
+
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +9,7 @@ import java.util.Map;
  * @author wuhaitao
  * @date 2016/5/27 23:58
  */
+@Message
 public class ClassA {
     private int code;
     private String msg;

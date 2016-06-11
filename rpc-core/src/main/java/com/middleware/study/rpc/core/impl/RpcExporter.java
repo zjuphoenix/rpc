@@ -1,6 +1,7 @@
 package com.middleware.study.rpc.core.impl;
 
 import com.middleware.study.rpc.core.Exporter;
+import com.middleware.study.rpc.core.Provider;
 import com.middleware.study.rpc.transport.api.RequestHandler;
 import com.middleware.study.rpc.transport.api.Server;
 import com.middleware.study.rpc.transport.impl.NettyEndpointFactory;
@@ -13,17 +14,17 @@ import com.middleware.study.rpc.transport.impl.RpcResponse;
  */
 public class RpcExporter<T> implements Exporter<T> {
 
-    private RpcServiceProvider<T> provider;
+    private Provider<T> provider;
     private int port;
     private Server server;
 
-    public RpcExporter(RpcServiceProvider<T> provider, int port) {
+    public RpcExporter(Provider<T> provider, int port) {
         this.provider = provider;
         this.port = port;
     }
 
     @Override
-    public RpcServiceProvider<T> getProvider() {
+    public Provider<T> getProvider() {
         return provider;
     }
 
@@ -34,6 +35,7 @@ public class RpcExporter<T> implements Exporter<T> {
 
     @Override
     public void unexport() {
+        destroy();
     }
 
     @Override
